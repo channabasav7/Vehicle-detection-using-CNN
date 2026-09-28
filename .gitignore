@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+
+# Generated training and detection outputs
+vehicle-detection/runs/
+vehicle-detection/results/train_runs/
+vehicle-detection/utils/runs/
+
+# Raw and augmented datasets are kept out of the source repository
+vehicle-detection/dataset/raw/
+vehicle-detection/dataset/combined/
+
+# Local editor and notebook artifacts
+.vscode/
+.ipynb_checkpoints/

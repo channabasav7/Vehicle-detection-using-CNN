@@ -1,0 +1,38 @@
+# Training configuration for Vehicle Type Detection and Classification
+# Referenced by training/train.py
+
+model:
+  # Any Ultralytics YOLO checkpoint works. Larger = more accurate, slower.
+  # Options: yolo11n.pt, yolo11s.pt, yolo11m.pt, yolo11l.pt, yolo11x.pt
+  base_weights: "yolo11n.pt"
+
+data:
+  data_yaml: "config/dataset.yaml"
+
+hyperparameters:
+  epochs: 100
+  batch_size: 16        # reduce to 4-8 if you hit out-of-memory on GPU/CPU
+  image_size: 640
+  learning_rate: 0.01   # initial lr (lr0)
+  lrf: 0.01             # final lr fraction (lr0 * lrf)
+  optimizer: "auto"     # auto | SGD | Adam | AdamW
+  patience: 20          # early stopping patience (epochs with no improvement)
+  workers: 8
+  seed: 42
+
+augmentation:
+  hsv_h: 0.015
+  hsv_s: 0.7
+  hsv_v: 0.4
+  degrees: 5.0
+  translate: 0.1
+  scale: 0.5
+  shear: 0.0
+  flipud: 0.0
+  fliplr: 0.5
+  mosaic: 1.0
+  mixup: 0.1
+
+output:
+  project_dir: "results/train_runs"
+  run_name: "vehicle_yolo"
